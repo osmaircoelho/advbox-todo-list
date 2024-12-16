@@ -11,5 +11,12 @@ Planejamento da tarefa Advbox
 
 -Criar migrations para tasks e categories /feature/migrations
  [x] migration para tasks
- [x] migraion para categories
--
+ [x] migration para categories
+
+-Criar os modelos feature/models
+ [] Model para tasks
+ [] Model para categorie
+ [] Incluir os relacionamentos para user model
+
+-Criar os componentes para task e categories feature/componentes-task-category
+ []
