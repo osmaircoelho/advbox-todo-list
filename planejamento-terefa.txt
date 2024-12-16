@@ -9,5 +9,5 @@ Planejamento da tarefa Advbox
  [x] instalar o laravel 11.x na minha maquina
 	[x] incluir o pest, github, livewire, blade
 
--Criar migrations para tasks e categories
- []
+-Criar migrations para tasks e categories /feature/migrations
+ [] migrations para tasks
