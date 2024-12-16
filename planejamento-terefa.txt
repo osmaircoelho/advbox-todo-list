@@ -16,7 +16,7 @@ Planejamento da tarefa Advbox
 -Criar os modelos feature/models
  [x] Model para tasks
  [x] Model para categorie
- [] Incluir os relacionamentos para user model
+ [x] Incluir os relacionamentos para user model
 
 -Criar os componentes para task e categories feature/componentes-task-category
  []
