@@ -23,6 +23,6 @@ Planejamento da tarefa Advbox
  [x] Update .env
  [x] Implementar middleware para rota autenticada
 
--Crie as views Livewire para TaskManager e CategoryManager feature/views
+-Crie as views Livewire para TaskManager e CategoryManager feature/views * []todo voltar nesta branch para trabalhar nela
  [x] Criar as views para CategoryManager e TakskManager e update arquivo dashboard
 
