@@ -1,0 +1,13 @@
+teste Técnico - Vaga Júnior FullStack
+
+Descricao do teste
+Desenvolver uma aplicação em Laravel que gerencie um sistema de tarefas (To-Do List).
+
+Planejamento da tarefa Advbox
+
+-Instalacao
+ [x] instalar o laravel 11.x na minha maquina
+	[x] incluir o pest, github, livewire, blade
+
+-Criar migrations para tasks e categories
+ []
