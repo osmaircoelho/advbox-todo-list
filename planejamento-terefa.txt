@@ -10,4 +10,5 @@ Planejamento da tarefa Advbox
 	[x] incluir o pest, github, livewire, blade
 
 -Criar migrations para tasks e categories /feature/migrations
- [] migrations para tasks
+ [x] migration para tasks
+ [] migraion para categories
