@@ -22,3 +22,7 @@ Planejamento da tarefa Advbox
  [x] Criar os componentes para task e category
  [x] Update .env
  [x] Implementar middleware para rota autenticada
+
+-Crie as views Livewire para TaskManager e CategoryManager feature/views
+ [x] Criar as views para CategoryManager e TakskManager e update arquivo dashboard
+
