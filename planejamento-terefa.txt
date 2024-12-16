@@ -11,4 +11,5 @@ Planejamento da tarefa Advbox
 
 -Criar migrations para tasks e categories /feature/migrations
  [x] migration para tasks
- [] migraion para categories
+ [x] migraion para categories
+-
