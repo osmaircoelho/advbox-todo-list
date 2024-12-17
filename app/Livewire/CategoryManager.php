@@ -14,6 +14,8 @@ class CategoryManager extends Component
     public $editingCategory;
     public $editCategoryName;
     public $showEditModal = false;
+    public $showDeleteModal = false;
+    public $categoryToDelete;
 
     protected $rules = [
         'newCategoryName' => 'required|min:3',
@@ -42,8 +44,8 @@ class CategoryManager extends Component
 
     public function editCategory($categoryId)
     {
-        $this->editingCategoryId = $categoryId;
-        $this->editCategoryName = Category::find($categoryId)->name;
+        $this->editingCategory = Category::find($categoryId);
+        $this->editCategoryName = $this->editingCategory->name;
         $this->showEditModal = true;
     }
 
@@ -53,12 +55,12 @@ class CategoryManager extends Component
             'editCategoryName' => 'required|min:3',
         ]);
 
-        $category = Category::find($this->editingCategoryId);
-        $category->update([
+        $this->editingCategory->update([
             'name' => $this->editCategoryName,
         ]);
+
         $this->showEditModal = false;
-        $this->reset(['editingCategoryId', 'editCategoryName']);
+        $this->reset(['editingCategory', 'editCategoryName']);
         $this->loadCategories();
     }
 
@@ -68,11 +70,31 @@ class CategoryManager extends Component
         $this->reset(['editingCategory', 'editCategoryName']);
     }
 
+    public function confirmDelete($categoryId)
+    {
+        $this->categoryToDelete = Category::find($categoryId);
+        $this->showDeleteModal = true;
+    }
+
+    public function deleteCategory()
+    {
+        if ($this->categoryToDelete) {
+            $this->categoryToDelete->delete();
+            $this->showDeleteModal = false;
+            $this->categoryToDelete = null;
+            $this->loadCategories();
+        }
+    }
+
+    public function cancelDelete()
+    {
+        $this->showDeleteModal = false;
+        $this->categoryToDelete = null;
+    }
 
     public function render()
     {
         return view('livewire.category-manager');
     }
-
 
 }
