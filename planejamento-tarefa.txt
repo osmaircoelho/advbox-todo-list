@@ -13,16 +13,20 @@ Planejamento da tarefa Advbox
  [x] migration para tasks
  [x] migration para categories
 
--Criar os modelos feature/models
+-Criar os modelos /feature/models
  [x] Model para tasks
  [x] Model para categorie
  [x] Incluir os relacionamentos para user model
 
--Criar os componentes para task e categories feature/componentes-task-category
+-Criar os componentes para task e categories /feature/componentes-task-category
  [x] Criar os componentes para task e category
  [x] Update .env
  [x] Implementar middleware para rota autenticada
 
 -Crie as views Livewire para TaskManager e CategoryManager feature/views * []todo voltar nesta branch para trabalhar nela
  [x] Criar as views para CategoryManager e TakskManager e update arquivo dashboard
+
+-Criar dados fake para test ambas as tabelas Category e Task /feature/seeder
+ [x] Seeder CategorySeeder e TaskSeeder
+ [x] atualizar o arquivo DatabaseSeeder e rodar as seeders
 
