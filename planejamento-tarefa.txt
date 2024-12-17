@@ -31,7 +31,7 @@ Planejamento da tarefa Advbox
  [x] atualizar o arquivo DatabaseSeeder e rodar as seeders
 
 -Trabalhar no componente categoria e na view categoria feature/categoria-e-component-view
- [] carregar as categorias
+ [x] carregar as categorias
  [] add categoria e validar
  [] editar categoria
  [] atualizar categoria
