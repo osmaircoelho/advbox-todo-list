@@ -23,10 +23,19 @@ Planejamento da tarefa Advbox
  [x] Update .env
  [x] Implementar middleware para rota autenticada
 
--Crie as views Livewire para TaskManager e CategoryManager feature/views * []todo voltar nesta branch para trabalhar nela
+-Crie as views Livewire para TaskManager e CategoryManager feature/views
  [x] Criar as views para CategoryManager e TakskManager e update arquivo dashboard
 
 -Criar dados fake para test ambas as tabelas Category e Task /feature/seeder
  [x] Seeder CategorySeeder e TaskSeeder
  [x] atualizar o arquivo DatabaseSeeder e rodar as seeders
+
+-Trabalhar no componente categoria e na view categoria feature/categoria-e-component-view
+ [] carregar as categorias
+ [] add categoria e validar
+ [] editar categoria
+ [] atualizar categoria
+ [] deletar categoria
+ [] atualizar
+
 
