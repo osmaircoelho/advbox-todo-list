@@ -27,4 +27,6 @@ Planejamento da tarefa Advbox
  [x] Criar as views para CategoryManager e TakskManager e update arquivo dashboard
 
 -Criar dados fake para test ambas as tabelas Category e Task /feature/seeder
- [] Seeder CategorySeeder e TaskSeeder
+ [x] Seeder CategorySeeder e TaskSeeder
+ [x] atualizar o arquivo DatabaseSeeder e rodar as seeders
+
