@@ -21,6 +21,11 @@ class CategoryManager extends Component
         'newCategoryName' => 'required|min:3',
     ];
 
+    protected $messages = [
+        'newCategoryName.required' => 'The category name is required.',
+        'newCategoryName.min' => 'The category name must be at least 3 characters.',
+    ];
+
     public function mount(){
         $this->loadCategories();
     }

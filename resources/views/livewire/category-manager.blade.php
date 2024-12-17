@@ -4,6 +4,8 @@
     <div class="mb-4">
         <input type="text" wire:model="newCategoryName" placeholder="Category name" class="border rounded px-2 py-1 mr-2">
         <button wire:click="addCategory" class="bg-green-500 text-white px-4 py-1 rounded">Add Category</button>
+        </br>
+        @error('newCategoryName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
 
 
@@ -43,6 +45,7 @@
                            <h3 class="text-lg leading-6 font-medium text-gray-900">Edit Category</h3>
                            <div class="mt-2 px-7 py-3">
                                <input type="text" wire:model="editCategoryName" placeholder="Category name" class="border rounded px-2 py-1 mb-2 w-full">
+                               @error('editCategoryName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                            </div>
                            <div class="items-center px-4 py-3">
                                <button wire:click="updateCategory" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
