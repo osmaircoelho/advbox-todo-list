@@ -18,7 +18,7 @@
                    </tr>
                </x-table.thead>
                <tbody>
-               @foreach ($categories as $category)
+               @foreach ($categories->sortByDesc('id') as $category)
                    <x-table.tr>
                        <x-table.td>{{ $category->id }}</x-table.td>
                        <x-table.td>{{ $category->name }}</x-table.td>

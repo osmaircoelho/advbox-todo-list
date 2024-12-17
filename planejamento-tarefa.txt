@@ -32,10 +32,11 @@ Planejamento da tarefa Advbox
 
 -Trabalhar no componente categoria e na view categoria feature/categoria-e-component-view
  [x] carregar as categorias
- [] add categoria e validar
+ [x] add categoria e validar
  [] editar categoria
  [] atualizar categoria
  [] deletar categoria
  [] atualizar
+ [] mostrar mensagem de erro para erros de validacao
 
 
