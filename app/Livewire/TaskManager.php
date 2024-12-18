@@ -10,6 +10,21 @@ class TaskManager extends Component
 
     public $tasks;
     public $categories;
+    public $newTaskTitle;
+    public $newTaskDescription;
+    public $newTaskCategory;
+
+    protected $rules = [
+        'newTaskTitle' => 'required|min:3',
+        'newTaskDescription' => 'nullable',
+        'newTaskCategory' => 'nullable|exists:categories,id',
+    ];
+
+    protected $messages = [
+        'newTaskTitle.required' => 'The task title is required.',
+        'newTaskTitle.min' => 'The task title must be at least 3 characters.',
+        'newTaskCategory.exists' => 'The selected category is invalid.',
+    ];
 
     public function mount()
     {
@@ -21,6 +36,20 @@ class TaskManager extends Component
         $query = auth()->user()->tasks();
 
         $this->tasks = $query->get();
+    }
+
+    public function addTask()
+    {
+        $validatedData = $this->validate();
+
+        auth()->user()->tasks()->create([
+            'title' => $this->newTaskTitle,
+            'description' => $this->newTaskDescription,
+            'category_id' => $this->newTaskCategory,
+        ]);
+
+        $this->reset(['newTaskTitle', 'newTaskDescription', 'newTaskCategory']);
+        $this->loadTasks();
     }
 
     public function toggleComplete($taskId)
