@@ -37,6 +37,6 @@ Planejamento da tarefa Advbox
  [x] atualizar categoria
  [x] deletar categoria
  [x] mostrar mensagem de erro para erros de validacao
- [] adicionar um loading no topo da tela
+ [-] adicionar um loading no topo da tela
 
 
