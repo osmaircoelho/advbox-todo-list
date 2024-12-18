@@ -40,6 +40,7 @@ Planejamento da tarefa Advbox
 
 -Trabalhar no componente task e na view task feature/task-e-component-view
  [x] carregar as tasks
+ [x] implementar task completed
  [] add task e validar
  [] editar task
  [] atualizar task
