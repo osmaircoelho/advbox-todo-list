@@ -37,6 +37,14 @@ Planejamento da tarefa Advbox
  [x] atualizar categoria
  [x] deletar categoria
  [x] mostrar mensagem de erro para erros de validacao
- [-] adicionar um loading no topo da tela
+
+-Trabalhar no componente task e na view task feature/task-e-component-view
+ [x] carregar as tasks
+ [] add task e validar
+ [] editar task
+ [] atualizar task
+ [] deletar task
+ [] mostrar mensagem de erro para erros de validacao
+
 
 
