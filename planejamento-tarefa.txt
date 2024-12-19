@@ -49,3 +49,7 @@ Planejamento da tarefa Advbox
 -Filtros feature/filtros
  [x] filtro por categorias
  [x] filtro para exibir somente tarefas concluidas
+
+-Deletar tarefas automaticamente /feature/auto-deletar-tarefas
+ [x] Após uma semana marcada como concluída, a tarefa deve ser excluída automaticamente do banco de dados
+ [x] criar agendamento para deletar tarefas automaticamente
