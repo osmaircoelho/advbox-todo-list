@@ -17,9 +17,11 @@ class TaskManager extends Component
     public $editTaskTitle;
     public $editTaskDescription;
     public $editTaskCategory;
+    public $selectedCategory;
     public $taskToDelete;
     public $showDeleteModal = false;
     public $showEditModal = false;
+    public $showCompleted = null;
 
     protected $rules = [
         'newTaskTitle' => 'required|min:3',
@@ -41,6 +43,17 @@ class TaskManager extends Component
     public function loadTasks()
     {
         $query = auth()->user()->tasks();
+
+
+        if ($this->selectedCategory) {
+            $query->where('category_id', $this->selectedCategory);
+        }
+
+        if ($this->showCompleted === true) {
+            $query->where('completed', true);
+        } elseif ($this->showCompleted === false) {
+            $query->where('completed', false);
+        }
 
         $this->tasks = $query->get();
     }
@@ -121,6 +134,24 @@ class TaskManager extends Component
     {
         $this->showDeleteModal = false;
         $this->taskToDelete = null;
+    }
+
+    public function filterByCategory($categoryId)
+    {
+        $this->selectedCategory = $categoryId;
+        $this->loadTasks();
+    }
+
+    public function toggleShowCompleted()
+    {
+        $this->showCompleted = !$this->showCompleted;
+        $this->loadTasks();
+    }
+
+    public function clearFilters()
+    {
+        $this->reset(['selectedCategory', 'showCompleted']);
+        $this->loadTasks();
     }
 
     public function render()
