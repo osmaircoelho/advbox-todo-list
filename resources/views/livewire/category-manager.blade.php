@@ -3,7 +3,7 @@
 
     <div class="mb-4">
         <input type="text" wire:model="newCategoryName" placeholder="Category name" class="border rounded px-2 py-1 mr-2">
-        <button wire:click="addCategory" class="bg-green-500 text-white px-4 py-1 rounded">Add Category</button>
+        <button wire:click="addCategory" class="bg-blue-500 text-white px-4 py-1 rounded">Add Category</button>
         </br>
         @error('newCategoryName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>

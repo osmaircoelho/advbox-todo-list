@@ -42,6 +42,6 @@ Planejamento da tarefa Advbox
  [x] carregar as tasks
  [x] implementar task completed
  [x] add task, validar, mostrar mensagem de erro para erros de validacao
- [] editar task
- [] atualizar task
+ [x] editar task
+ [x] atualizar task
  [] deletar task

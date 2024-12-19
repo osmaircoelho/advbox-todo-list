@@ -16,9 +16,12 @@
 
         <button wire:click="addTask" class="bg-blue-500 text-white px-4 py-1 rounded">Add Task</button>
 
-        @error('newTaskCategory') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        @error('newTaskDescription') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        @error('newTaskTitle') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        @foreach(['newTaskCategory', 'newTaskDescription', 'newTaskTitle'] as $field)
+            @error($field)
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        @endforeach
+
     </div>
 
     <div class="dark:text-gray-400 space-y-4">
@@ -54,5 +57,105 @@
             </tbody>
 
         </x-table>
+
+
+        @if($showEditModal)
+
+
+            <div class="relative z-10 " aria-labelledby="modal-title" role="dialog" aria-modal="true" id="edit-modal">
+
+                <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                        <div class="relative transform overflow-hidden rounded-lg dark:bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg ">
+                            <button type="button" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 focus:outline-none" aria-label="Close" wire:click="closeEditModal">
+                                <span class="sr-only">Close</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            <div class="dark:bg-gray-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                <div class="sm:flex sm:items-start">
+                                    {{--<div class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
+                                        <svg class="size-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                                        </svg>
+                                    </div>--}}
+                                    <div class="mt-3 text-center sm:ml-0 sm:mt-0 sm:text-left w-full">
+                                        <h3 class="text-base font-semibold dark:text-white mb-5" id="modal-title">Edit task </h3>
+
+                                        <div class="flex flex-col space-y-4">
+                                            <div class="w-full">
+                                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Task title</label>
+                                                <input type="text" wire:model="editTaskTitle" placeholder="Task title" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                @error('editTaskTitle')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="w-full">
+                                                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category name</label>
+                                                <select wire:model="editTaskCategory" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                    <option value="">Select Category</option>
+                                                    @foreach($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('editTaskCategory') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                            </div>
+
+                                            <div>
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                <textarea wire:model="editTaskDescription" id="description" rows="5" class="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write a description...">{{ $editTaskDescription }}</textarea>
+                                                @error('editTaskDescription') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-700 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                <button wire:click="updateTask" type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">Update Task</button>
+                                <button wire:click="closeEditModal" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{--<div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="edit-modal">
+                <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                    <div class="mt-3 text-center">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Edit Task</h3>
+                        <div class="mt-2 px-7 py-3">
+                            <input type="text" wire:model="editTaskTitle" placeholder="Task title" class="border rounded px-2 py-1 mb-2 w-full">
+                            @error('editTaskTitle') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+                            <input type="text" wire:model="editTaskDescription" placeholder="Task description" class="border rounded px-2 py-1 mb-2 w-full">
+                            @error('editTaskDescription') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+                            <select wire:model="editTaskCategory" class="border rounded px-2 py-1 mb-2 w-full">
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('editTaskCategory') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="items-center px-4 py-3">
+                            <button wire:click="updateTask" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                Update Task
+                            </button>
+                            <button wire:click="closeEditModal" class="mt-3 px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>--}}
+        @endif
     </div>
 </div>
