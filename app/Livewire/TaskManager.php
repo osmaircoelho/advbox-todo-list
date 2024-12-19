@@ -17,6 +17,8 @@ class TaskManager extends Component
     public $editTaskTitle;
     public $editTaskDescription;
     public $editTaskCategory;
+    public $taskToDelete;
+    public $showDeleteModal = false;
     public $showEditModal = false;
 
     protected $rules = [
@@ -99,6 +101,28 @@ class TaskManager extends Component
         $task->save();
         $this->loadTasks();
     }
+
+    public function confirmDelete($taskId)
+    {
+        $this->taskToDelete = Task::find($taskId);
+        $this->showDeleteModal = true;
+    }
+    public function deleteTask()
+    {
+        if ($this->taskToDelete) {
+            $this->taskToDelete->delete();
+            $this->showDeleteModal = false;
+            $this->taskToDelete = null;
+            $this->loadTasks();
+        }
+    }
+
+    public function cancelDelete()
+    {
+        $this->showDeleteModal = false;
+        $this->taskToDelete = null;
+    }
+
     public function render()
     {
         return view('livewire.task-manager');
