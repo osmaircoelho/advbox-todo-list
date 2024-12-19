@@ -45,3 +45,7 @@ Planejamento da tarefa Advbox
  [x] editar task
  [x] atualizar task
  [x] deletar task
+
+-Filtros feature/filtros
+ [x] filtro por categorias
+ [x] filtro para exibir somente tarefas concluidas

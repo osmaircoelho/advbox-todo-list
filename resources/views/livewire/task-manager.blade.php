@@ -24,6 +24,36 @@
 
     </div>
 
+    <div class="mb-4 border rounded-lg p-4 bg-gray-100 dark:bg-gray-800">
+        <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Filter Options</h4>
+        <div class="flex flex-wrap items-center gap-4">
+            <div>
+                <label for="category-filter" class="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-1">Select Category</label>
+                <select id="category-filter" wire:model="selectedCategory" wire:change="filterByCategory($event.target.value)"
+                        class="w-52 border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <option value="">All Categories</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mt-7">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" wire:click="toggleShowCompleted"
+                            {{ $showCompleted ? 'checked' : '' }}
+                            class="form-checkbox h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-500">
+                    <span class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Task completed</span>
+
+                </label>
+                <button wire:click="clearFilters" class="bg-gray-300 text-gray-700 px-4 py-1 rounded ml-4">
+                    Clear Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="dark:text-gray-400 space-y-4">
 
         <x-table>
@@ -37,7 +67,6 @@
                     <x-table.th>Actions</x-table.th>
                 </tr>
             </x-table.thead>
-
 
             <tbody>
             @foreach ($tasks->sortByDesc('id') as $task)
@@ -79,7 +108,6 @@
                 </div>
             </div>
         @endif
-
 
         @if($showEditModal)
 
