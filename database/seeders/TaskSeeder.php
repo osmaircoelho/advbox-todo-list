@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TaskSeeder extends Seeder
@@ -17,7 +16,13 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         $user = User::where('email', 'test@example.com')->first();
+
         $categories = Category::where('user_id', $user->id)->get();
+
+        if ($categories->isEmpty()) {
+            print('Nenhuma categoria encontrada para o usuário "test@example.com".').PHP_EOL;
+            return;
+        }
 
         $tasks = [
             [
@@ -67,7 +72,12 @@ class TaskSeeder extends Seeder
         foreach ($tasks as $taskData) {
             $category = $categories->firstWhere('name', $taskData['category']);
 
-            $task = Task::create([
+            if (!$category) {
+                print('Categoria "' . $taskData['category'] . '" não encontrada. Tarefa ignorada.').PHP_EOL;
+                continue;
+            }
+
+            Task::create([
                 'title' => $taskData['title'],
                 'description' => $taskData['description'],
                 'category_id' => $category->id,
