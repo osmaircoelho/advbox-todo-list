@@ -56,11 +56,11 @@ Planejamento da tarefa Advbox
 
 -Crud de usuários /feature/user
  [x] criar componente Livewire UserManager
-  [] listagem,
-  [] criação,
-  [] edição e exclusão de usuários.
-[] criar uma view Blade para o componente Livewire
+  [x] listagem
+  [] criação
+  [] edição e exclusão de usuários
+[x] criar uma view Blade para o componente Livewire
  [] formulário de criação/edição
- [] lista de usuários.
-[] atualizar o arquivo de rotas incluir novo componente livewire
-[] modificamos o menu de navegação para incluir um link para o gerenciamento de usuários.
+ [x] lista de usuários
+[x] atualizar o arquivo de rotas incluir novo componente livewire
+[x] modificamos o menu de navegação para incluir um link para o gerenciamento de usuários

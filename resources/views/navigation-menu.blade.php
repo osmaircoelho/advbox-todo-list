@@ -98,6 +98,10 @@
                                 {{ __('Manage Account') }}
                             </div>
 
+                            <x-dropdown-link href="{{ route('users.index') }}">
+                                {{ __('User Manager') }}
+                            </x-dropdown-link>
+
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
