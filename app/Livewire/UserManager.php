@@ -17,6 +17,8 @@ class UserManager extends Component
     public $password_confirmation;
     public $user_id;
     public $message;
+    public $showDeleteModal = false;
+    public $userToDelete;
 
     protected $rules = [
         'name' => 'required|string|max:255',
@@ -71,6 +73,28 @@ class UserManager extends Component
         $this->password = '';
         $this->password_confirmation = '';
         $this->user_id = null;
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->userToDelete = User::findOrFail($id);
+        $this->showDeleteModal = true;
+    }
+
+    public function deleteUser()
+    {
+        if ($this->userToDelete) {
+            $this->userToDelete->delete();
+            $this->showDeleteModal = false;
+            $this->userToDelete = null;
+            $this->message = 'User deleted successfully.';
+        }
+    }
+
+    public function cancelDelete()
+    {
+        $this->showDeleteModal = false;
+        $this->userToDelete = null;
     }
 
     public function closeAlert()
