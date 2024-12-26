@@ -4,7 +4,6 @@
     <h2 class="text-2xl font-bold mb-4 text-white">Task Manager</h2>
 
     <div class="mb-4 flex flex-row">
-        {{--<input type="text" wire:model="newTaskTitle" placeholder="Task title" class="border rounded px-2 py-1 mr-2 dark:text-white bg-white text-sm">--}}
 
         <div class="">
             <x-label for="newtask" value="Task title" />
@@ -15,9 +14,6 @@
             <x-label for="taskDescription" value="Task description" />
             <x-input id="taskDescription" class="block mt-1 mr-2" type="text" wire:model="newTaskDescription" />
         </div>
-
-
-        {{--<input type="text" wire:model="newTaskDescription" placeholder="Task description" class="border rounded px-2 py-1 mr-2">--}}
 
         <div>
             <x-label for="newTaskCategory" value="New Task Category" />
@@ -34,9 +30,6 @@
             <x-button class="ms-3" wire:click="addTask">Add Task</x-button>
         </div>
 
-
-        {{--<button wire:click="addTask" class="bg-blue-500 text-white px-4 py-1 rounded">Add Task</button>--}}
-
         <div class="items-center content-end ml-2">
             @foreach(['newTaskCategory', 'newTaskDescription', 'newTaskTitle'] as $field)
                 @error($field)
@@ -46,10 +39,6 @@
         </div>
 
     </div>
-
-
-
-
 
     <div class="mb-4 border rounded-lg p-4 bg-gray-100 dark:bg-gray-800">
         <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Filter Options</h4>

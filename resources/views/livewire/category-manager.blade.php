@@ -1,13 +1,25 @@
 <div>
-    <h2 class="text-2xl font-bold mb-4">Category Manager</h2>
+    <h2 class="text-2xl font-bold mb-4 text-white">Category Manager</h2>
 
-    <div class="mb-4">
-        <input type="text" wire:model="newCategoryName" placeholder="Category name" class="border rounded px-2 py-1 mr-2">
-        <button wire:click="addCategory" class="bg-blue-500 text-white px-4 py-1 rounded">Add Category</button>
+    <div class="mb-4 flex flex-row">
+
+        <div>
+            <x-label for="categoryname" value="Category name"></x-label>
+            <x-input id="categoryname" class="block mt-1" type="text" wire:model="newCategoryName" />
+        </div>
+
+
+        <div class="items-center content-end">
+            <x-button class="ms-3" wire:click="addCategory">Add Category</x-button>
+        </div>
+
         </br>
-        @error('newCategoryName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-    </div>
 
+        <div class="items-center content-end ml-2">
+            @error('newCategoryName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+
+    </div>
 
        <div class="dark:text-gray-400 space-y-4">
 
@@ -84,5 +96,4 @@
            @endif
 
        </div>
-
 </div>
