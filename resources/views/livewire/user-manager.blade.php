@@ -86,6 +86,68 @@
             {{ $users->links() }}
         </div>
     </div>
+
+    @if($showEditModal)
+
+        <div class="relative z-10 " aria-labelledby="modal-title" role="dialog" aria-modal="true" id="edit-modal">
+
+            <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                    <div class="relative transform overflow-hidden rounded-lg dark:bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg ">
+                        <button type="button" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 focus:outline-none" aria-label="Close" wire:click="closeEditModal">
+                            <span class="sr-only">Close</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+
+                        <div class="dark:bg-gray-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mt-3 text-center sm:ml-0 sm:mt-0 sm:text-left w-full">
+                                    <h3 class="text-base font-semibold dark:text-white mb-5" id="modal-title">Edit User</h3>
+
+                                    <div class="flex flex-col space-y-4">
+
+                                            <div>
+                                                <x-label for="username" value="Name"></x-label>
+                                                <x-input id="username" class="block mt-1 mr-2 w-full" type="text" wire:model="editName" />
+                                                @error('editName') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                            </div>
+
+                                            <div>
+                                                <x-label for="useremail" value="E-mail"></x-label>
+                                                <x-input id="useremail" class="block mt-1 mr-2 w-full" type="text" wire:model="editEmail" />
+                                                @error('editEmail') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                            </div>
+
+                                            <div>
+                                                <x-label for="userpassword" value="Password"></x-label>
+                                                <x-input id="userpassword" class="block mt-1 mr-2 w-full" type="text" wire:model="editPassword" />
+                                                @error('editPassword') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                            </div>
+
+                                            <div>
+                                                <x-label for="userpassword_confirmation" value="Confirm Password:"></x-label>
+                                                <x-input id="userpassword_confirmation" class="block mt-1 w-full" type="text" wire:model="editPassword_confirmation" />
+                                            </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-700 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                            <button wire:click="updateUser" type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">Update User</button>
+                            <button wire:click="closeEditModal" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if($showDeleteModal)
         <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

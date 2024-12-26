@@ -15,10 +15,16 @@ class UserManager extends Component
     public $email;
     public $password;
     public $password_confirmation;
+    public $editingUser;
+    public $editName;
+    public $editEmail;
+    public $editPassword;
+    public $editPassword_confirmation;
     public $user_id;
     public $message;
     public $showDeleteModal = false;
     public $userToDelete;
+    public $showEditModal;
 
     protected $rules = [
         'name' => 'required|string|max:255',
@@ -66,6 +72,47 @@ class UserManager extends Component
         $this->message = 'User created successfully.';
     }
 
+    public function editUser($userId)
+    {
+
+        $this->editingUser = User::find($userId);
+        $this->editName = $this->editingUser->name;
+        $this->editEmail = $this->editingUser->email;
+        $this->editPassword = '';
+        $this->editPassword_confirmation = '';
+        $this->showEditModal = true;
+
+    }
+
+    public function updateUser()
+    {
+
+        $this->validate([
+            'editName' => 'required|string|max:255',
+            'editEmail' => 'required|string|email|max:255|unique:users,email,' . $this->editingUser->id,
+            'editPassword' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $this->editingUser->update([
+            'name' => $this->editName,
+            'email' => $this->editEmail,
+        ]);
+
+        if ($this->editPassword) {
+            $this->editingUser->update(['password' => Hash::make($this->editPassword)]);
+        }
+
+        $this->showEditModal = false;
+        $this->reset(['editingUser', 'editName', 'editEmail', 'editPassword', 'editPassword_confirmation']);
+        $this->message = 'User updated successfully.';
+    }
+
+    public function closeEditModal()
+    {
+        $this->showEditModal = false;
+        $this->reset(['name', 'email', 'password', 'password_confirmation']);
+    }
+
     private function resetInputFields()
     {
         $this->name = '';
@@ -101,6 +148,5 @@ class UserManager extends Component
     {
         $this->message = null;
     }
-
 
 }

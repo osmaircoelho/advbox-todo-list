@@ -61,7 +61,7 @@ Planejamento da tarefa Advbox
   [x] alterar o layout dashboard taskmanager
   [x] alterar o layout dashboard categorymanager
   [x] criação
-  [] edição e exclusão de usuários
+  [x] edição e exclusão de usuários
 [x] criar uma view Blade para o componente Livewire
  [x] lista de usuários
 [x] atualizar o arquivo de rotas incluir novo componente livewire
