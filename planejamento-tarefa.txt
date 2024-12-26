@@ -58,7 +58,8 @@ Planejamento da tarefa Advbox
  [x] criar componente Livewire UserManager
   [x] listagem
   [x] mudancas no seed
-  [] alterar o layout
+  [x] alterar o layout dashboard taskmanager
+  [] alterar o layout dashboard categorymanager
   [] criação
   [] edição e exclusão de usuários
 [x] criar uma view Blade para o componente Livewire
