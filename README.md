@@ -1,66 +1,152 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplicação de Lista de Tarefas Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta aplicação de Lista de Tarefas baseada em Laravel oferece recursos de gerenciamento de tarefas e administração de usuários. É construída com Laravel 11 e usa Livewire para interfaces de usuário dinâmicas e responsivas.
 
-## About Laravel
+## Índice
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. [Instalação](#instalação)
+2. [Principais Funcionalidades](#principais-funcionalidades)
+3. [Testando Filtros e Ações Automáticas](#testando-filtros-e-ações-automáticas)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalação
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Siga estes passos para configurar e executar o projeto:
 
-## Learning Laravel
+1. Clone o repositório:
+   ```
+   git clone https://github.com/osmaircoelho/advbox-todo-list.git
+   cd advbox-todo-list
+   ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Instale as dependências PHP:
+   ```
+   composer install
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+3. Instale e compile as dependências do frontend:
+   ```
+   npm install
+   npm run dev
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. O arquivo .env já está incluído no repositório para facilitar a instalação. Você pode ajustá-lo conforme necessário.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. Gere uma chave de aplicação:
+   ```
+   php artisan key:generate
+   ```
 
-### Premium Partners
+7. Configure o banco de dados SQLite no arquivo .env:
+   ```
+   DB_CONNECTION=sqlite
+   DB_DATABASE=/caminho/absoluto/para/seu/arquivo/database.sqlite
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   Certifique-se de criar o arquivo database.sqlite no diretório database/ do seu projeto.
 
-## Contributing
+8. Execute as migrações do banco de dados e os seeders:
+   ```
+   php artisan migrate --seed
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   Ao executar o seeder, um usuário de teste será criado automaticamente:
+    - Nome: Test User
+    - Email: test@example.com
+    - Senha: password
 
-## Code of Conduct
+   Este usuário já estará configurado na tela de login, com email e senha preenchidos para facilitar o acesso.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+9. Inicie o servidor de desenvolvimento:
+   ```
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+10. Visite `http://localhost:8000` no seu navegador para acessar a aplicação.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Principais Funcionalidades
 
-## License
+1. **Gerenciamento de Tarefas**
+    - Criar, editar e excluir tarefas
+    - Marcar tarefas como concluídas ou não concluídas
+    - Atribuir tarefas a categorias
+    - Visualizar detalhes da tarefa, incluindo título, descrição e status
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. **Gerenciamento de Categorias**
+    - Criar, editar e excluir categorias de tarefas
+    - Atribuir tarefas a categorias específicas
+    - Filtrar tarefas por categoria
+
+3. **Gerenciamento de Usuários**
+    - Registro e autenticação de usuários
+    - Gerenciamento de perfil de usuário
+    - Qualquer usuário logado pode gerenciar contas de usuários (criar, editar, excluir)
+
+4. **Filtragem e Ordenação de Tarefas**
+    - Filtrar tarefas por categoria
+    - Filtrar tarefas por status de conclusão
+    - Limpar todos os filtros para visualizar todas as tarefas
+
+5. **Integração com Livewire**
+    - Atualizações em tempo real sem recarregar a página
+    - Experiência do usuário aprimorada com conteúdo dinâmico
+
+## Testando Filtros e Ações Automáticas
+
+Para testar os filtros e ações na aplicação de Lista de Tarefas, siga estes passos:
+
+1. **Testando Filtros de Tarefas**
+    - Faça login na aplicação
+    - Crie várias tarefas com diferentes categorias e status de conclusão
+    - Use o menu suspenso de categorias para filtrar tarefas por uma categoria específica
+    - Use o botão "Mostrar Concluídas" para filtrar tarefas concluídas ou não concluídas
+    - Clique no botão "Limpar Filtros" para redefinir todos os filtros
+
+2. **Testando Ações de Tarefas**
+    - **Criar uma Tarefa**:
+        - Preencha o título da tarefa, descrição e selecione uma categoria
+        - Clique em "Adicionar Tarefa" e verifique se ela aparece na lista de tarefas
+
+    - **Editar uma Tarefa**:
+        - Clique no botão "Editar" ao lado de uma tarefa
+        - Modifique os detalhes da tarefa no modal
+        - Clique em "Atualizar Tarefa" e verifique se as alterações são refletidas
+
+    - **Concluir uma Tarefa**:
+        - Clique na caixa de seleção ao lado de uma tarefa
+        - Verifique se a tarefa é marcada como concluída e se sua aparência muda
+
+    - **Excluir uma Tarefa**:
+        - Clique no botão "Excluir" ao lado de uma tarefa
+        - Confirme a exclusão no modal
+        - Verifique se a tarefa é removida da lista
+
+3. **Testando Gerenciamento de Categorias**
+    - Navegue até a seção de Gerenciador de Categorias
+    - Crie uma nova categoria
+    - Edite uma categoria existente
+    - Exclua uma categoria
+    - Verifique se as alterações nas categorias são refletidas nas opções de criação e filtragem de tarefas
+
+4. **Testando Gerenciamento de Usuários**
+    - Faça login na aplicação
+    - Navegue até a seção de Gerenciamento de Usuários
+    - Crie uma nova conta de usuário
+    - Edite os detalhes de um usuário existente
+    - Exclua uma conta de usuário
+    - Verifique se os usuários excluídos não podem mais fazer login
+
+5. **Testando Atualizações em Tempo Real do Livewire**
+    - Abra a aplicação em duas janelas ou abas diferentes do navegador
+    - Em uma janela, crie ou atualize uma tarefa ou categoria
+    - Verifique se a alteração aparece em tempo real na outra janela sem atualizar
+
+
+## Mensagem Final
+
+Foi um grande prazer realizar este desafio técnico para a AdvBox, apesar da correria de fim de ano. Gostaria muito de receber um feedback, seja ele positivo ou negativo, pois isso me ajudará a crescer como profissional.
+
+Este projeto foi feito com muito amor, graças ao TALL stack (Tailwind, Alpine.js, Laravel, Livewire) 💖
+
+Espero que gostem do resultado! 🚀
+

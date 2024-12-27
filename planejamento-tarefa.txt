@@ -66,3 +66,6 @@ Planejamento da tarefa Advbox
  [x] lista de usuários
 [x] atualizar o arquivo de rotas incluir novo componente livewire
 [x] modificamos o menu de navegação para incluir um link para o gerenciamento de usuários
+
+-Criar arquivo read me /main
+ [x] Criar arquivo readme.md
