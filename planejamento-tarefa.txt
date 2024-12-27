@@ -53,3 +53,16 @@ Planejamento da tarefa Advbox
 -Deletar tarefas automaticamente /feature/auto-deletar-tarefas
  [x] Após uma semana marcada como concluída, a tarefa deve ser excluída automaticamente do banco de dados
  [x] criar agendamento para deletar tarefas automaticamente
+
+-Crud de usuários /feature/user
+ [x] criar componente Livewire UserManager
+  [x] listagem
+  [x] mudancas no seed
+  [x] alterar o layout dashboard taskmanager
+  [x] alterar o layout dashboard categorymanager
+  [x] criação
+  [x] edição e exclusão de usuários
+[x] criar uma view Blade para o componente Livewire
+ [x] lista de usuários
+[x] atualizar o arquivo de rotas incluir novo componente livewire
+[x] modificamos o menu de navegação para incluir um link para o gerenciamento de usuários

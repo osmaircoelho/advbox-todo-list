@@ -25,19 +25,22 @@ class CategorySeeder extends Seeder
             'Lazer',
         ];
 
-        $user = User::first();
+        $users = User::all();
 
-        if (!$user) {
-            Log::warning('Nenhum usuário encontrado. As categorias não foram criadas.');
+        if ($users->isEmpty()) {
+            print('Nenhum usuário encontrado. As categorias não foram criadas.').PHP_EOL;
             return;
         }
 
         foreach ($categories as $categoryName) {
+
+            $randomUser = $users->random();
+
             Category::create([
                 'name' => $categoryName,
-                'user_id' => $user->id
+                'user_id' => $randomUser->id
             ]);
         }
-        $this->command->info('Categorias criadas com sucesso para o usuário: ' . $user->email);
+        print('Categoria "' . $categoryName . '" criada para o usuário: ' . $randomUser->email).PHP_EOL;
     }
 }
